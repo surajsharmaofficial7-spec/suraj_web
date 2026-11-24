@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
+import CardStack from "../components/CardStack.astro";
+import Footer from "../components/Footer.astro";
+import { getProjects } from "../lib/wp";
+
+const projects = await getProjects(); // fetched from WordPress at build time
+---
+<Layout>
+  <Nav />
+  <Hero />
+  <Projects projects={projects} />
+  <CardStack />
+  <Footer />
+</Layout>
+
+<script>
+  import "../scripts/animations";
+</script>

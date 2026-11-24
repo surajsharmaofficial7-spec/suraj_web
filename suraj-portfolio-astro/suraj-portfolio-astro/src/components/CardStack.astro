@@ -1,0 +1,22 @@
+---
+import { stack } from "../data/content";
+---
+<section id="about">
+  <div class="label"><h2 class="serif">Experience &amp; craft</h2><span>Stack ↓</span></div>
+  <div class="stack">
+    {stack.map((c, i) => (
+      <article class="card" style={`--i:${i}`}>
+        <div>
+          <div class="k">{c.kind}</div>
+          <h3 class="serif">{c.title}</h3>
+          {"sub" in c && c.sub && <p style="color:var(--mute);margin-top:8px">{c.sub}</p>}
+        </div>
+        {"chips" in c ? (
+          <div class="chips">{c.chips.map((x) => <span>{x}</span>)}</div>
+        ) : (
+          <ul>{c.list.map((l) => <li><b>{l.b}</b> — {l.t}</li>)}</ul>
+        )}
+      </article>
+    ))}
+  </div>
+</section>
