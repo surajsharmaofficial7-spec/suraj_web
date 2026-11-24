@@ -1,0 +1,11 @@
+---
+import type { Home } from "../data/content";
+const { home } = Astro.props as { home: Home };
+---
+<footer id="contact">
+  <div class="eyebrow">Let’s work together</div>
+  <h2 class="serif">Have a project<br />in mind?</h2>
+  <a class="btn" href={`mailto:${home.email}`}>{home.email}</a>
+  <p style="margin-top:20px;color:var(--mute)">{home.phone}</p>
+  <small>© {new Date().getFullYear()} {home.name}</small>
+</footer>

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
+import CardStack from "../components/CardStack.astro";
+import Footer from "../components/Footer.astro";
+import { getProjects, getHome, getStack } from "../lib/wp";
+
+// All content is pulled from WordPress at build time
+const [projects, home, cards] = await Promise.all([getProjects(), getHome(), getStack()]);
+---
+<Layout>
+  <Nav />
+  <Hero home={home} />
+  <Projects projects={projects} />
+  <CardStack cards={cards} />
+  <Footer home={home} />
+</Layout>
+
+<script>
+  import "../scripts/animations";
+</script>
